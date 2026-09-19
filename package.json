@@ -1,0 +1,29 @@
+{
+  "name": "jev-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A demonstration of Jev, TypeSafe AI's System One model: typed decisions, calibrated confidence, and a measurable automation gate.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "triage": "tsx src/cli/triage.ts",
+    "calibrate": "tsx src/cli/calibrate.ts",
+    "record": "tsx src/cli/record.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "synthesize": "tsx src/cli/synthesize.ts",
+    "web": "tsx src/server/index.ts",
+    "fake-api": "node tools/fake-api.mjs"
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.6.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2",
+    "vitest": "^5.0.1"
+  }
+}

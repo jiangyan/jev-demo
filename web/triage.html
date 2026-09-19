@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Jev Triage Desk</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%237aa2f7'/><path d='M4 8.5l2.5 2.5L12 5.5' stroke='%230c0e12' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+    />
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <h1>Jev Triage Desk</h1>
+        <p class="sub">
+          One call per ticket. Six typed answers. The software decides what to do with them.
+        </p>
+      </div>
+      <div class="mode" id="mode" hidden></div>
+    </header>
+
+    <nav class="tabs">
+      <a href="/">Compose</a>
+      <a href="/triage.html" aria-current="page">Triage desk</a>
+    </nav>
+
+    <div id="loading" class="loading">
+      <span class="spinner" aria-hidden="true"></span>
+      <span id="loading-text">Asking Jev about the queue&hellip;</span>
+    </div>
+
+    <main id="app" hidden>
+      <div class="columns">
+      <section class="panel gate" aria-labelledby="gate-heading">
+        <h2 id="gate-heading">The gate</h2>
+        <p class="note">
+          Jev returns a calibrated probability, not just a label. These thresholds
+          turn that probability into an action. Move them and the whole queue
+          re-decides &mdash; no further model calls, because the answers are already in.
+        </p>
+
+        <div class="sliders" id="sliders"></div>
+
+        <div class="stats" id="stats"></div>
+        <div class="tradeoff" id="tradeoff"></div>
+      </section>
+
+      <section class="panel queue" aria-labelledby="queue-heading">
+        <div class="queue-head">
+          <h2 id="queue-heading">The queue</h2>
+          <div class="filters" id="filters"></div>
+        </div>
+        <ul class="tickets" id="tickets"></ul>
+      </section>
+      </div>
+
+      <section class="panel calibration" aria-labelledby="cal-heading">
+        <h2 id="cal-heading">Is the confidence worth anything?</h2>
+        <p class="note">
+          Calibration is a falsifiable claim: of the answers given at 0.9, about 90%
+          should be right. Every threshold above depends on it, so it is worth
+          checking against human labels rather than taking on trust.
+        </p>
+        <div id="cal-summary" class="cal-summary"></div>
+        <div id="reliability" class="reliability"></div>
+        <div id="operating" class="operating"></div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <span id="foot-note"></span>
+    </footer>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

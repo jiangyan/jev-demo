@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Before you hit send</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%237aa2f7'/><path d='M4 8.5l2.5 2.5L12 5.5' stroke='%230c0e12' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>"
+    />
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <h1>Before you hit send</h1>
+        <p class="sub">
+          Five questions about your half-written reply, asked again on every word you type.
+          An LLM cannot sit here. This can.
+        </p>
+      </div>
+      <div class="mode" id="mode" hidden></div>
+    </header>
+
+    <nav class="tabs">
+      <a href="/" aria-current="page">Compose</a>
+      <a href="/triage.html">Triage desk</a>
+    </nav>
+
+    <main class="compose">
+      <section class="panel scenarios" aria-labelledby="sc-h">
+        <h2 id="sc-h">Pick a situation</h2>
+        <div class="scen-list" id="scenarios"></div>
+      </section>
+
+      <section class="panel editor" aria-labelledby="ed-h">
+        <h2 id="ed-h">The message</h2>
+        <blockquote class="incoming" id="incoming"></blockquote>
+
+        <div class="editor-head">
+          <label for="draft">Your reply</label>
+          <div class="playback">
+            <button type="button" id="play" class="ghost">Type it out</button>
+            <button type="button" id="clear" class="ghost">Clear</button>
+          </div>
+        </div>
+        <textarea id="draft" rows="7" spellcheck="false"
+          placeholder="Start typing, or press Type it out to watch a reply go wrong."></textarea>
+
+        <div class="sendbar">
+          <button type="button" id="send" class="send">Send</button>
+          <span class="summary" id="summary"></span>
+        </div>
+        <ul class="flags" id="flags"></ul>
+      </section>
+
+      <section class="panel readouts" aria-labelledby="ro-h">
+        <div class="readouts-head">
+          <h2 id="ro-h">What Jev sees</h2>
+          <span class="src" id="src"></span>
+        </div>
+        <div id="meters"></div>
+        <p class="note" id="watchline"></p>
+      </section>
+    </main>
+
+    <footer class="foot"><span id="foot-note"></span></footer>
+    <script type="module" src="/compose.js"></script>
+  </body>
+</html>

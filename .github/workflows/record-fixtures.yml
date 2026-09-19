@@ -1,0 +1,68 @@
+# Capture real answers from Jev and commit them.
+#
+# This exists because the machine the demo was built on cannot reach api.typesafe.ai.
+# A GitHub runner can. Run this once and the offline demos stop replaying stand-ins and
+# start replaying the real model.
+#
+# Before the first run, add a repository secret named TYPESAFE_API_KEY
+# (Settings -> Secrets and variables -> Actions -> New repository secret).
+#
+# It is manual-only on purpose: nothing here should spend API calls on a push.
+
+name: Record fixtures
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Branch to commit the recorded fixtures to
+        required: true
+        default: claude/project-thread-9jf22n
+
+permissions:
+  contents: write
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ inputs.branch }}
+          # The Commit step pushes, so the checkout must leave credentials behind.
+          persist-credentials: true
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+
+      - run: npm ci
+
+      - name: Record
+        env:
+          TYPESAFE_API_KEY: ${{ secrets.TYPESAFE_API_KEY }}
+        run: |
+          if [ -z "$TYPESAFE_API_KEY" ]; then
+            echo "::error::No TYPESAFE_API_KEY secret is set on this repository."
+            exit 1
+          fi
+          npm run record
+
+      - name: Check the recordings still satisfy the suite
+        run: npm test
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fixtures/
+          if git diff --cached --quiet; then
+            echo "Fixtures unchanged."
+            exit 0
+          fi
+          git commit -m "Record real fixtures from Jev
+
+          Replaces the synthetic cassette and the keyword stand-in with answers
+          captured from the live API, so the offline demos replay real output."
+          git push origin HEAD:${{ inputs.branch }}

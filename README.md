@@ -60,6 +60,19 @@ npm run fake-api &
 TYPESAFE_API_KEY=anything TYPESAFE_BASE_URL=http://localhost:8899 npm run web -- --live
 ```
 
+## Put it on a URL
+
+The demos are a Vercel deployment as well as a local server. `api/[...path].ts` is the
+same four endpoints as `src/server/index.ts`, and `web/` is served as static files
+beside it. Import the repository at [vercel.com/new](https://vercel.com/new) -- the
+settings in `vercel.json` are already right, so nothing needs configuring -- then add
+`TYPESAFE_API_KEY` as a **Sensitive** environment variable and redeploy.
+
+With that key set, every keystroke in the deployed demo is a real call to Jev, and the
+key never leaves the server. Without it the deployment still works and replays the
+recording, saying `recorded` on screen as it always does. Note that a public URL spends
+the credits on whatever key you gave it.
+
 There is a terminal version of the triage desk:
 
 ```bash

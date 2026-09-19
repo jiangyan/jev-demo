@@ -1,5 +1,5 @@
 import { existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { fixturePath } from "./fixtures.js";
 import { TypeSafeClient, type SystemOneResult } from "@typesafe-ai/sdk";
 import { decisionSheet, type DecisionSheet } from "./questions.js";
 import { loadCassette, questionsFingerprint, replayFetch, type Cassette } from "./cassette.js";
@@ -7,7 +7,7 @@ import type { Ticket } from "./tickets.js";
 
 export type Mode = "live" | "replay";
 
-export const CASSETTE_PATH = fileURLToPath(new URL("../../fixtures/cassette.json", import.meta.url));
+export const CASSETTE_PATH = fixturePath("cassette.json");
 
 export interface Session {
   mode: Mode;

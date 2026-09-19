@@ -1,0 +1,1641 @@
+{
+  "generator": "synthetic",
+  "createdAt": "2026-09-19T16:04:02.002Z",
+  "model": "jev-latest",
+  "questionsFingerprint": "5054bae2fbf1735a",
+  "note": "GENERATED LOCALLY, NOT RECORDED FROM JEV. Shaped like a real response so the demo runs offline. Says nothing about the real model's accuracy or calibration. Run `npm run record` with a real API key to replace it.",
+  "entries": {
+    "159993c7fd97a53a": {
+      "label": "T-1001 Charged twice for order A-104",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 0.872,
+            "probabilities": {
+              "billing": 0.872,
+              "technical": 0.038,
+              "account": 0.026,
+              "abuse": 0.052,
+              "other": 0.012
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.037,
+            "confidence": 0.922,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.031,
+              "1": 0.922,
+              "2": 0.026,
+              "3": 0.021
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.441,
+            "confidence": 0.625,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.625,
+              "1": 0.308,
+              "2": 0.067
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.864
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.1
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.181
+          }
+        },
+        "usage": {
+          "input_tokens": 185,
+          "output_tokens": 48
+        }
+      }
+    },
+    "2239417ea0b8474e": {
+      "label": "T-1002 Webhooks stopped firing",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "abuse",
+            "confidence": 0.924,
+            "probabilities": {
+              "abuse": 0.924,
+              "billing": 0.029,
+              "technical": 0.014,
+              "account": 0.024,
+              "other": 0.009
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 2.64,
+            "confidence": 0.828,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.066,
+              "1": 0.055,
+              "2": 0.05,
+              "3": 0.828
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.68,
+            "confidence": 0.771,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.091,
+              "1": 0.138,
+              "2": 0.771
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.101
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.087
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.072
+          }
+        },
+        "usage": {
+          "input_tokens": 199,
+          "output_tokens": 48
+        }
+      }
+    },
+    "c8b84a724a1a1f6b": {
+      "label": "T-1003 Someone else is logged into my account",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "abuse",
+            "confidence": 0.906,
+            "probabilities": {
+              "abuse": 0.906,
+              "billing": 0.021,
+              "technical": 0.021,
+              "account": 0.023,
+              "other": 0.029
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 2.333,
+            "confidence": 0.668,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.124,
+              "1": 0.086,
+              "2": 0.122,
+              "3": 0.668
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.754,
+            "confidence": 0.831,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.077,
+              "1": 0.091,
+              "2": 0.831
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.121
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.152
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.921
+          }
+        },
+        "usage": {
+          "input_tokens": 195,
+          "output_tokens": 48
+        }
+      }
+    },
+    "b87dc7c8cff74d60": {
+      "label": "T-1004 How do I add a teammate?",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "account",
+            "confidence": 0.927,
+            "probabilities": {
+              "account": 0.927,
+              "billing": 0.041,
+              "technical": 0.009,
+              "abuse": 0.009,
+              "other": 0.014
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 0.541,
+            "confidence": 0.731,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.731,
+              "1": 0.119,
+              "2": 0.029,
+              "3": 0.121
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.481,
+            "confidence": 0.678,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.678,
+              "1": 0.162,
+              "2": 0.159
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.276
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.182
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.24
+          }
+        },
+        "usage": {
+          "input_tokens": 181,
+          "output_tokens": 48
+        }
+      }
+    },
+    "4cf10917dd2e3d65": {
+      "label": "T-1005 Payment page won't load",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "technical",
+            "confidence": 0.726,
+            "probabilities": {
+              "technical": 0.726,
+              "billing": 0.082,
+              "account": 0.101,
+              "abuse": 0.051,
+              "other": 0.04
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.946,
+            "confidence": 0.917,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.028,
+              "1": 0.026,
+              "2": 0.917,
+              "3": 0.029
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.925,
+            "confidence": 0.579,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.248,
+              "1": 0.579,
+              "2": 0.173
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.151
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.082
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.066
+          }
+        },
+        "usage": {
+          "input_tokens": 194,
+          "output_tokens": 48
+        }
+      }
+    },
+    "7b28d1afc3e6b454": {
+      "label": "T-1006 Cancel my subscription",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 0.889,
+            "probabilities": {
+              "billing": 0.889,
+              "technical": 0.017,
+              "account": 0.034,
+              "abuse": 0.03,
+              "other": 0.03
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 0.376,
+            "confidence": 0.775,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.775,
+              "1": 0.127,
+              "2": 0.046,
+              "3": 0.053
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.335,
+            "confidence": 0.814,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.814,
+              "1": 0.037,
+              "2": 0.149
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.099
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.141
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.246
+          }
+        },
+        "usage": {
+          "input_tokens": 179,
+          "output_tokens": 48
+        }
+      }
+    },
+    "e8a7d9c199d928df": {
+      "label": "T-1007 THIRD TIME ASKING",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "technical",
+            "confidence": 0.941,
+            "probabilities": {
+              "technical": 0.941,
+              "billing": 0.006,
+              "account": 0.021,
+              "abuse": 0.02,
+              "other": 0.012
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 2.72,
+            "confidence": 0.849,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.034,
+              "1": 0.062,
+              "2": 0.056,
+              "3": 0.849
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.677,
+            "confidence": 0.776,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.099,
+              "1": 0.125,
+              "2": 0.776
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.861
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.158
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.165
+          }
+        },
+        "usage": {
+          "input_tokens": 213,
+          "output_tokens": 48
+        }
+      }
+    },
+    "56adfa8dccf818b3": {
+      "label": "T-1008 Lost my 2FA device",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "account",
+            "confidence": 0.765,
+            "probabilities": {
+              "account": 0.765,
+              "billing": 0.036,
+              "technical": 0.063,
+              "abuse": 0.07,
+              "other": 0.066
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.839,
+            "confidence": 0.77,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.101,
+              "1": 0.044,
+              "2": 0.77,
+              "3": 0.085
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.989,
+            "confidence": 0.593,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.209,
+              "1": 0.593,
+              "2": 0.198
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.167
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.075
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.109
+          }
+        },
+        "usage": {
+          "input_tokens": 176,
+          "output_tokens": 48
+        }
+      }
+    },
+    "9a4ef9796a307912": {
+      "label": "T-1009 Here are my card details",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 0.905,
+            "probabilities": {
+              "billing": 0.905,
+              "technical": 0.025,
+              "account": 0.015,
+              "abuse": 0.021,
+              "other": 0.034
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.061,
+            "confidence": 0.875,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.057,
+              "1": 0.875,
+              "2": 0.018,
+              "3": 0.05
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.76,
+            "confidence": 0.519,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.519,
+              "1": 0.201,
+              "2": 0.279
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.065
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.938
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.212
+          }
+        },
+        "usage": {
+          "input_tokens": 191,
+          "output_tokens": 48
+        }
+      }
+    },
+    "27ba0c058dc5ee4b": {
+      "label": "T-1010 Invoice VAT number wrong",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 0.91,
+            "probabilities": {
+              "billing": 0.91,
+              "technical": 0.029,
+              "account": 0.013,
+              "abuse": 0.031,
+              "other": 0.017
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.102,
+            "confidence": 0.886,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.032,
+              "1": 0.886,
+              "2": 0.03,
+              "3": 0.052
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.507,
+            "confidence": 0.67,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.67,
+              "1": 0.154,
+              "2": 0.177
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.17
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.081
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.071
+          }
+        },
+        "usage": {
+          "input_tokens": 177,
+          "output_tokens": 48
+        }
+      }
+    },
+    "1fa43401f3e51ef2": {
+      "label": "T-1011 Our API key is in a public repo",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "abuse",
+            "confidence": 0.912,
+            "probabilities": {
+              "abuse": 0.912,
+              "billing": 0.028,
+              "technical": 0.02,
+              "account": 0.031,
+              "other": 0.009
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 2.206,
+            "confidence": 0.678,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.196,
+              "1": 0.08,
+              "2": 0.046,
+              "3": 0.678
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.429,
+            "confidence": 0.608,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.179,
+              "1": 0.213,
+              "2": 0.608
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.265
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.82
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.748
+          }
+        },
+        "usage": {
+          "input_tokens": 197,
+          "output_tokens": 48
+        }
+      }
+    },
+    "452656f8763a6e89": {
+      "label": "T-1012 Dashboard is slow",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "other",
+            "confidence": 0.932,
+            "probabilities": {
+              "other": 0.932,
+              "billing": 0.007,
+              "technical": 0.009,
+              "account": 0.026,
+              "abuse": 0.026
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.183,
+            "confidence": 0.762,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.085,
+              "1": 0.762,
+              "2": 0.038,
+              "3": 0.115
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.284,
+            "confidence": 0.798,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.798,
+              "1": 0.119,
+              "2": 0.082
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.093
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.115
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.175
+          }
+        },
+        "usage": {
+          "input_tokens": 183,
+          "output_tokens": 48
+        }
+      }
+    },
+    "88253474daf74839": {
+      "label": "T-1013 Refund for the extra seats",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 0.977,
+            "probabilities": {
+              "billing": 0.977,
+              "technical": 0.002,
+              "account": 0.005,
+              "abuse": 0.008,
+              "other": 0.008
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.266,
+            "confidence": 0.732,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.056,
+              "1": 0.732,
+              "2": 0.101,
+              "3": 0.111
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.428,
+            "confidence": 0.662,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.662,
+              "1": 0.249,
+              "2": 0.089
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.747
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.174
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.25
+          }
+        },
+        "usage": {
+          "input_tokens": 186,
+          "output_tokens": 48
+        }
+      }
+    },
+    "3d87571a3429f736": {
+      "label": "T-1014 Phishing email pretending to be you",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "abuse",
+            "confidence": 0.956,
+            "probabilities": {
+              "abuse": 0.956,
+              "billing": 0.005,
+              "technical": 0.014,
+              "account": 0.011,
+              "other": 0.014
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.985,
+            "confidence": 0.798,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.052,
+              "1": 0.031,
+              "2": 0.798,
+              "3": 0.12
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.046,
+            "confidence": 0.779,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.087,
+              "1": 0.779,
+              "2": 0.134
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.171
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.15
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.855
+          }
+        },
+        "usage": {
+          "input_tokens": 200,
+          "output_tokens": 48
+        }
+      }
+    },
+    "92b7015e2dcf842f": {
+      "label": "T-1015 Can't log in after the password reset",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 0.662,
+            "probabilities": {
+              "billing": 0.662,
+              "technical": 0.12,
+              "account": 0.076,
+              "abuse": 0.119,
+              "other": 0.024
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 2.789,
+            "confidence": 0.891,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.028,
+              "1": 0.045,
+              "2": 0.035,
+              "3": 0.891
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.786,
+            "confidence": 0.841,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.054,
+              "1": 0.105,
+              "2": 0.841
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.107
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.136
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.284
+          }
+        },
+        "usage": {
+          "input_tokens": 198,
+          "output_tokens": 48
+        }
+      }
+    },
+    "f6b9450d835b88bf": {
+      "label": "T-1016 Do you have a student discount?",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 0.95,
+            "probabilities": {
+              "billing": 0.95,
+              "technical": 0.006,
+              "account": 0.017,
+              "abuse": 0.02,
+              "other": 0.007
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 0.379,
+            "confidence": 0.761,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.761,
+              "1": 0.122,
+              "2": 0.092,
+              "3": 0.025
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.526,
+            "confidence": 0.639,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.639,
+              "1": 0.197,
+              "2": 0.164
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.184
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.159
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.161
+          }
+        },
+        "usage": {
+          "input_tokens": 180,
+          "output_tokens": 48
+        }
+      }
+    },
+    "bde011930fe720d8": {
+      "label": "T-1017 Rate limited on the free plan",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "abuse",
+            "confidence": 0.745,
+            "probabilities": {
+              "abuse": 0.745,
+              "billing": 0.048,
+              "technical": 0.063,
+              "account": 0.069,
+              "other": 0.074
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.929,
+            "confidence": 0.865,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.04,
+              "1": 0.043,
+              "2": 0.865,
+              "3": 0.052
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.223,
+            "confidence": 0.677,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.05,
+              "1": 0.677,
+              "2": 0.273
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.179
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.159
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.26
+          }
+        },
+        "usage": {
+          "input_tokens": 196,
+          "output_tokens": 48
+        }
+      }
+    },
+    "99ed05a9b2c664f6": {
+      "label": "T-1018 Remove my data",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "other",
+            "confidence": 0.788,
+            "probabilities": {
+              "other": 0.788,
+              "billing": 0.072,
+              "technical": 0.07,
+              "account": 0.052,
+              "abuse": 0.018
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.133,
+            "confidence": 0.789,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.078,
+              "1": 0.789,
+              "2": 0.053,
+              "3": 0.079
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.377,
+            "confidence": 0.751,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.751,
+              "1": 0.122,
+              "2": 0.128
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.09
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.952
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.233
+          }
+        },
+        "usage": {
+          "input_tokens": 193,
+          "output_tokens": 48
+        }
+      }
+    },
+    "48c312a5696635ab": {
+      "label": "T-1019 Data export produces empty files",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "technical",
+            "confidence": 0.885,
+            "probabilities": {
+              "technical": 0.885,
+              "billing": 0.017,
+              "account": 0.044,
+              "abuse": 0.018,
+              "other": 0.036
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.941,
+            "confidence": 0.887,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.041,
+              "1": 0.024,
+              "2": 0.887,
+              "3": 0.048
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.908,
+            "confidence": 0.756,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.168,
+              "1": 0.756,
+              "2": 0.076
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.121
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.051
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.284
+          }
+        },
+        "usage": {
+          "input_tokens": 191,
+          "output_tokens": 48
+        }
+      }
+    },
+    "94c7e0554d6f675c": {
+      "label": "T-1020 Unrecognised charge",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 0.753,
+            "probabilities": {
+              "billing": 0.753,
+              "technical": 0.077,
+              "account": 0.092,
+              "abuse": 0.048,
+              "other": 0.03
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.888,
+            "confidence": 0.908,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.043,
+              "1": 0.037,
+              "2": 0.908,
+              "3": 0.012
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.917,
+            "confidence": 0.639,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.222,
+              "1": 0.639,
+              "2": 0.139
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.177
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.141
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.194
+          }
+        },
+        "usage": {
+          "input_tokens": 208,
+          "output_tokens": 48
+        }
+      }
+    },
+    "aefa2f572571338c": {
+      "label": "T-1021 Thanks",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "other",
+            "confidence": 0.947,
+            "probabilities": {
+              "other": 0.947,
+              "billing": 0.012,
+              "technical": 0.015,
+              "account": 0.008,
+              "abuse": 0.019
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 0.627,
+            "confidence": 0.725,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.725,
+              "1": 0.028,
+              "2": 0.141,
+              "3": 0.106
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.53,
+            "confidence": 0.579,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.579,
+              "1": 0.313,
+              "2": 0.109
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.065
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.066
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.264
+          }
+        },
+        "usage": {
+          "input_tokens": 165,
+          "output_tokens": 48
+        }
+      }
+    },
+    "3c6af93660ae5e4c": {
+      "label": "T-1022 SSO group mapping not applied",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "abuse",
+            "confidence": 0.796,
+            "probabilities": {
+              "abuse": 0.796,
+              "billing": 0.064,
+              "technical": 0.061,
+              "account": 0.039,
+              "other": 0.04
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 2.568,
+            "confidence": 0.754,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.078,
+              "1": 0.03,
+              "2": 0.138,
+              "3": 0.754
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 1.437,
+            "confidence": 0.613,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.175,
+              "1": 0.212,
+              "2": 0.613
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.257
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.127
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.236
+          }
+        },
+        "usage": {
+          "input_tokens": 190,
+          "output_tokens": 48
+        }
+      }
+    },
+    "c8cf6abde4fac9af": {
+      "label": "T-1023 Downgrade did not take effect",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "billing",
+            "confidence": 0.894,
+            "probabilities": {
+              "billing": 0.894,
+              "technical": 0.022,
+              "account": 0.015,
+              "abuse": 0.046,
+              "other": 0.023
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.042,
+            "confidence": 0.93,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.023,
+              "1": 0.93,
+              "2": 0.029,
+              "3": 0.018
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.43,
+            "confidence": 0.703,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.703,
+              "1": 0.164,
+              "2": 0.133
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.806
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.184
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.093
+          }
+        },
+        "usage": {
+          "input_tokens": 192,
+          "output_tokens": 48
+        }
+      }
+    },
+    "2ebdfba801301a8d": {
+      "label": "T-1024 Is this email from you?",
+      "response": {
+        "model": "jev-latest",
+        "answers": {
+          "department": {
+            "type": "choice",
+            "choice": "technical",
+            "confidence": 0.739,
+            "probabilities": {
+              "technical": 0.739,
+              "billing": 0.08,
+              "account": 0.061,
+              "abuse": 0.075,
+              "other": 0.045
+            }
+          },
+          "severity": {
+            "type": "score",
+            "score": 1.316,
+            "confidence": 0.67,
+            "legend": {
+              "0": "A question or request with nothing broken. Nobody is blocked.",
+              "1": "Something is degraded or awkward, but a workaround exists.",
+              "2": "A core workflow is broken for this customer with no workaround.",
+              "3": "Money is being lost, data is at risk, or the customer is entirely down."
+            },
+            "probabilities": {
+              "0": 0.076,
+              "1": 0.67,
+              "2": 0.115,
+              "3": 0.139
+            }
+          },
+          "frustration": {
+            "type": "score",
+            "score": 0.656,
+            "confidence": 0.534,
+            "legend": {
+              "0": "Neutral or friendly. Straightforward request.",
+              "1": "Impatient. Mentions waiting, repeating themselves, or a previous attempt.",
+              "2": "Angry. Threatens to leave, demands escalation, or uses hostile language."
+            },
+            "probabilities": {
+              "0": 0.534,
+              "1": 0.276,
+              "2": 0.19
+            }
+          },
+          "refund_requested": {
+            "type": "noul",
+            "noul": 0.273
+          },
+          "contains_pii": {
+            "type": "noul",
+            "noul": 0.126
+          },
+          "security_incident": {
+            "type": "noul",
+            "noul": 0.731
+          }
+        },
+        "usage": {
+          "input_tokens": 197,
+          "output_tokens": 48
+        }
+      }
+    }
+  }
+}

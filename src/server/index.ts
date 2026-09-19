@@ -13,6 +13,9 @@ import { readFile } from "node:fs/promises";
 import { extname, join, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ask, openSession, type Session } from "../core/client.js";
+import { judge, type ComposeState } from "../core/compose.js";
+import { openComposeEngine } from "../core/composeSource.js";
+import { drafts } from "../core/drafts.js";
 import { defaultThresholds, route, type Answers, type Thresholds } from "../core/gate.js";
 import { operatingPoints, reliability, type Outcome } from "../core/calibration.js";
 import { decisionSheet } from "../core/questions.js";
@@ -22,9 +25,11 @@ const WEB_ROOT = fileURLToPath(new URL("../../web/", import.meta.url));
 const PORT = Number(process.env["PORT"] ?? 5173);
 
 const argv = process.argv.slice(2);
+const forceLive = argv.includes("--live");
 const session: Session = openSession(
-  argv.includes("--live") ? { mode: "live" } : argv.includes("--replay") ? { mode: "replay" } : {},
+  forceLive ? { mode: "live" } : argv.includes("--replay") ? { mode: "replay" } : {},
 );
+const compose = openComposeEngine(forceLive ? { live: true } : argv.includes("--replay") ? { live: false } : {});
 
 interface Sheet {
   ticketId: string;
@@ -137,6 +142,29 @@ const server = createServer(async (req, res) => {
         questions: decisionSheet,
         tickets,
         sheets: all,
+      });
+    }
+
+    if (url.pathname === "/api/drafts") {
+      return json(res, 200, {
+        drafts,
+        source: compose.preferred,
+        hasRecording: compose.hasRecording,
+      });
+    }
+
+    if (url.pathname === "/api/compose" && req.method === "POST") {
+      const body = (await readBody(req)) as Partial<ComposeState>;
+      const state: ComposeState = {
+        they_wrote: String(body.they_wrote ?? ""),
+        my_reply: String(body.my_reply ?? ""),
+      };
+      const reading = await compose.read(state);
+      return json(res, 200, {
+        answers: reading.answers,
+        source: reading.source,
+        ms: reading.ms,
+        verdict: judge(reading.answers, state.my_reply),
       });
     }
 

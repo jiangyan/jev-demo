@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jev Triage Desk</title>
+    <title>Before you hit send</title>
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><rect width='16' height='16' rx='3' fill='%237aa2f7'/><path d='M4 8.5l2.5 2.5L12 5.5' stroke='%230c0e12' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>"
@@ -13,61 +13,58 @@
   <body>
     <header class="top">
       <div class="brand">
-        <h1>Jev Triage Desk</h1>
+        <h1>Before you hit send</h1>
         <p class="sub">
-          One call per ticket. Six typed answers. The software decides what to do with them.
+          Five questions about your half-written reply, asked again on every word you type.
+          An LLM cannot sit here. This can.
         </p>
       </div>
       <div class="mode" id="mode" hidden></div>
     </header>
 
-    <div id="loading" class="loading">
-      <span class="spinner" aria-hidden="true"></span>
-      <span id="loading-text">Asking Jev about the queue&hellip;</span>
-    </div>
+    <nav class="tabs">
+      <a href="/" aria-current="page">Compose</a>
+      <a href="/triage.html">Triage desk</a>
+    </nav>
 
-    <main id="app" hidden>
-      <div class="columns">
-      <section class="panel gate" aria-labelledby="gate-heading">
-        <h2 id="gate-heading">The gate</h2>
-        <p class="note">
-          Jev returns a calibrated probability, not just a label. These thresholds
-          turn that probability into an action. Move them and the whole queue
-          re-decides &mdash; no further model calls, because the answers are already in.
-        </p>
-
-        <div class="sliders" id="sliders"></div>
-
-        <div class="stats" id="stats"></div>
-        <div class="tradeoff" id="tradeoff"></div>
+    <main class="compose">
+      <section class="panel scenarios" aria-labelledby="sc-h">
+        <h2 id="sc-h">Pick a situation</h2>
+        <div class="scen-list" id="scenarios"></div>
       </section>
 
-      <section class="panel queue" aria-labelledby="queue-heading">
-        <div class="queue-head">
-          <h2 id="queue-heading">The queue</h2>
-          <div class="filters" id="filters"></div>
+      <section class="panel editor" aria-labelledby="ed-h">
+        <h2 id="ed-h">The message</h2>
+        <blockquote class="incoming" id="incoming"></blockquote>
+
+        <div class="editor-head">
+          <label for="draft">Your reply</label>
+          <div class="playback">
+            <button type="button" id="play" class="ghost">Type it out</button>
+            <button type="button" id="clear" class="ghost">Clear</button>
+          </div>
         </div>
-        <ul class="tickets" id="tickets"></ul>
-      </section>
-      </div>
+        <textarea id="draft" rows="7" spellcheck="false"
+          placeholder="Start typing, or press Type it out to watch a reply go wrong."></textarea>
 
-      <section class="panel calibration" aria-labelledby="cal-heading">
-        <h2 id="cal-heading">Is the confidence worth anything?</h2>
-        <p class="note">
-          Calibration is a falsifiable claim: of the answers given at 0.9, about 90%
-          should be right. Every threshold above depends on it, so it is worth
-          checking against human labels rather than taking on trust.
-        </p>
-        <div id="cal-summary" class="cal-summary"></div>
-        <div id="reliability" class="reliability"></div>
-        <div id="operating" class="operating"></div>
+        <div class="sendbar">
+          <button type="button" id="send" class="send">Send</button>
+          <span class="summary" id="summary"></span>
+        </div>
+        <ul class="flags" id="flags"></ul>
+      </section>
+
+      <section class="panel readouts" aria-labelledby="ro-h">
+        <div class="readouts-head">
+          <h2 id="ro-h">What Jev sees</h2>
+          <span class="src" id="src"></span>
+        </div>
+        <div id="meters"></div>
+        <p class="note" id="watchline"></p>
       </section>
     </main>
 
-    <footer class="foot">
-      <span id="foot-note"></span>
-    </footer>
-
-    <script type="module" src="/app.js"></script>
+    <footer class="foot"><span id="foot-note"></span></footer>
+    <script type="module" src="/compose.js"></script>
   </body>
 </html>

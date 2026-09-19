@@ -7,7 +7,7 @@ enough to sit in the hot path.
 
 ### Before you hit send — `/`
 
-You are writing a reply. On every word you type, five questions are asked about the draft:
+You are writing a reply. On every key you press, five questions are asked about the draft:
 how it will land, whether it answers what was actually asked, whether there is a credential
 in it, what it commits you to, whether it blames the reader. The Send button reacts. Type
 out the sample replies and watch a polite message turn hostile in its last sentence, or a
@@ -15,6 +15,13 @@ config paste turn into a leaked key.
 
 This is the demo that makes the point, because a three-second model cannot sit between your
 keyboard and your screen. A 70-500ms one can.
+
+Live, that is one call per keystroke, not per word: nothing is debounced and nothing is
+cancelled, the calls simply race and a stale answer is discarded when a newer one has
+already landed. Forty-four characters of typing is forty-four calls. The footer keeps the
+running count and what it actually cost, taken from the token usage the API reports rather
+than from an estimate, because the whole claim being made here is that this is cheap enough
+to do thoughtlessly. Offline it stays on word boundaries, where the recording has answers.
 
 ![Before you hit send](docs/compose.png)
 
@@ -59,6 +66,19 @@ request so you can see its shape:
 npm run fake-api &
 TYPESAFE_API_KEY=anything TYPESAFE_BASE_URL=http://localhost:8899 npm run web -- --live
 ```
+
+## Put it on a URL
+
+The demos are a Vercel deployment as well as a local server. `api/[...path].ts` is the
+same four endpoints as `src/server/index.ts`, and `web/` is served as static files
+beside it. Import the repository at [vercel.com/new](https://vercel.com/new) -- the
+settings in `vercel.json` are already right, so nothing needs configuring -- then add
+`TYPESAFE_API_KEY` as a **Sensitive** environment variable and redeploy.
+
+With that key set, every keystroke in the deployed demo is a real call to Jev, and the
+key never leaves the server. Without it the deployment still works and replays the
+recording, saying `recorded` on screen as it always does. Note that a public URL spends
+the credits on whatever key you gave it.
 
 There is a terminal version of the triage desk:
 

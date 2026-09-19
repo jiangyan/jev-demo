@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { judge, prefixes, words, type ComposeAnswers } from "../src/core/compose.js";
+import { openComposeEngine } from "../src/core/composeSource.js";
 import { drafts } from "../src/core/drafts.js";
 import { standIn } from "../src/core/standin.js";
 
@@ -110,5 +111,28 @@ describe("the offline stand-in", () => {
     const a = standIn({ they_wrote: "x", my_reply: "you should have checked. obviously. as i said." });
     expect(a.blames_reader.noul).toBeLessThan(1);
     expect(a.answers_them.noul).toBeLessThan(1);
+  });
+});
+
+describe("what a reading reports about its own cost", () => {
+  // The footer shows a running bill, and it has to be the real one. If these numbers were
+  // estimated, the demo's central claim -- that this is cheap enough to do on every
+  // keystroke -- would be a sentence about itself rather than a measurement.
+  const engine = openComposeEngine({ live: false });
+
+  it("passes through the tokens the API billed for a recorded answer", async () => {
+    const first = drafts[0]!;
+    const reading = await engine.read({ they_wrote: first.theyWrote, my_reply: first.reply });
+    expect(reading.source).toBe("recorded");
+    expect(reading.inputTokens).toBeGreaterThan(0);
+  });
+
+  it("bills nothing for the stand-in, which calls nothing", async () => {
+    const reading = await engine.read({
+      they_wrote: "nothing was ever recorded for this",
+      my_reply: "nor for this, so the keyword rules answer instead",
+    });
+    expect(reading.source).toBe("stand-in");
+    expect(reading.inputTokens).toBe(0);
   });
 });

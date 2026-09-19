@@ -1,11 +1,11 @@
 import { existsSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import { fixturePath } from "./fixtures.js";
 import { TypeSafeClient } from "@typesafe-ai/sdk";
 import { composeSheet, type ComposeAnswers, type ComposeState } from "./compose.js";
 import { loadCassette, replayFetch, type Cassette } from "./cassette.js";
 import { standIn } from "./standin.js";
 
-export const COMPOSE_CASSETTE = fileURLToPath(new URL("../../fixtures/compose-cassette.json", import.meta.url));
+export const COMPOSE_CASSETTE = fixturePath("compose-cassette.json");
 
 /** Where a given answer came from. Shown in the interface, never hidden. */
 export type Source = "live" | "recorded" | "stand-in";
@@ -15,6 +15,8 @@ export interface ComposeReading {
   source: Source;
   /** Round-trip milliseconds. Only meaningful for `live`. */
   ms: number;
+  /** Input tokens the call billed for. Zero for the stand-in, which bills nothing. */
+  inputTokens: number;
 }
 
 export interface ComposeEngine {
@@ -50,7 +52,12 @@ export function openComposeEngine(options: { live?: boolean } = {}): ComposeEngi
           { state: state as unknown as Record<string, string>, questions: composeSheet },
           signal ? { signal } : {},
         );
-        return { answers: result.answers, source: "live", ms: performance.now() - started };
+        return {
+          answers: result.answers,
+          source: "live",
+          ms: performance.now() - started,
+          inputTokens: result.usage.input_tokens,
+        };
       },
     };
   }
@@ -77,12 +84,17 @@ export function openComposeEngine(options: { live?: boolean } = {}): ComposeEngi
             state: state as unknown as Record<string, string>,
             questions: composeSheet,
           });
-          return { answers: result.answers, source: "recorded", ms: performance.now() - started };
+          return {
+            answers: result.answers,
+            source: "recorded",
+            ms: performance.now() - started,
+            inputTokens: result.usage.input_tokens,
+          };
         } catch {
           // Nothing recorded for this exact draft. Fall through and say so.
         }
       }
-      return { answers: standIn(state), source: "stand-in", ms: 0 };
+      return { answers: standIn(state), source: "stand-in", ms: 0, inputTokens: 0 };
     },
   };
 }

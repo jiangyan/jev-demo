@@ -82,6 +82,11 @@ to drive an interface, with an obviously fake source behind them.
 every prefix of every sample reply. After that the offline demos replay actual model output
 and the numbers start meaning something.
 
+If you would rather not run it locally, the **Record fixtures** GitHub Actions workflow does
+the same thing on a runner, which has the network access this sandbox lacks. Add a
+`TYPESAFE_API_KEY` repository secret, run the workflow from the Actions tab, and it commits
+the recorded fixtures back to the branch. Use a key you are willing to revoke afterwards.
+
 ## What it is actually showing
 
 **One call, six answers.** `src/core/questions.ts` is a single decision sheet: one

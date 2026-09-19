@@ -19,11 +19,14 @@ describe("the checked-in cassette", () => {
     expect(Object.keys(session.cassette?.entries ?? {})).toHaveLength(tickets.length);
   });
 
-  it("says plainly that it is not real model output", () => {
-    // If this ever fails because the cassette was re-recorded for real, delete
-    // the assertion rather than the honesty.
-    expect(session.cassette?.generator).toBe("synthetic");
-    expect(session.cassette?.note).toMatch(/NOT RECORDED FROM JEV/i);
+  it("says plainly where its answers came from", () => {
+    // Passes either way, and insists the cassette is honest about which way it is.
+    // A synthetic cassette must say so loudly; a real recording must name its source.
+    const generator = session.cassette?.generator;
+    expect(["synthetic", "recorded"]).toContain(generator);
+    expect(session.cassette?.note).toMatch(
+      generator === "synthetic" ? /NOT RECORDED FROM JEV/i : /recorded from/i,
+    );
   });
 });
 

@@ -40,8 +40,18 @@ the real model:
 ```bash
 cp .env.example .env  # then put a key in it
 export TYPESAFE_API_KEY=...
-npm run record        # capture real answers into fixtures/cassette.json
-npm run web           # or: npm run web -- --live
+npm run web -- --live # every keystroke is now a real call to Jev
+npm run record        # capture real answers into fixtures/, so offline replays them too
+```
+
+To check the wiring without a key, or without a network, point the demo at a local
+stand-in for the API. This exercises the genuine live path -- real SDK, real HTTP request
+to `/v1/systemone`, real `Authorization` header, real response parsing -- and logs each
+request so you can see its shape:
+
+```bash
+npm run fake-api &
+TYPESAFE_API_KEY=anything TYPESAFE_BASE_URL=http://localhost:8899 npm run web -- --live
 ```
 
 There is a terminal version of the triage desk:

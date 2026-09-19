@@ -14,7 +14,8 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "synthesize": "tsx src/cli/synthesize.ts",
-    "web": "tsx src/server/index.ts"
+    "web": "tsx src/server/index.ts",
+    "fake-api": "node tools/fake-api.mjs"
   },
   "dependencies": {
     "@typesafe-ai/sdk": "^0.6.0"

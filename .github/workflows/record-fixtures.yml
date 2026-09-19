@@ -26,11 +26,13 @@ jobs:
   record:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           ref: ${{ inputs.branch }}
+          # The Commit step pushes, so the checkout must leave credentials behind.
+          persist-credentials: true
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version: "22"
           cache: npm

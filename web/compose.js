@@ -1,10 +1,37 @@
-// The browser holds no key. It posts the draft to the server on every word and renders
-// whatever comes back, including which source the answer came from.
+// The browser holds no key. It posts the draft to the server and renders whatever comes
+// back, including which source the answer came from.
+//
+// When the server is live, every single keystroke gets its own call. Nothing is debounced
+// and nothing is cancelled: the calls race, and each answer is rendered only if a newer
+// one has not already landed. That is only reasonable because a call costs about four
+// hundredths of a cent and comes back in under a fifth of a second, which is the whole
+// argument for this class of model. The footer keeps the running total honest.
+//
+// Offline it falls back to the old behaviour. The recording holds one answer per word of
+// each sample reply, so asking per keystroke there would just miss the cassette between
+// word boundaries and flicker into the stand-in.
 
 const $ = (id) => document.getElementById(id);
 const f2 = (n) => Number(n).toFixed(2);
 
-const state = { drafts: [], current: null, playing: false, timer: null, lastSource: null };
+const state = {
+  drafts: [],
+  current: null,
+  playing: false,
+  timer: null,
+  /** True when the server is live, and every keystroke is worth its own call. */
+  perKeystroke: false,
+  /** Monotonic request number, so a slow answer never overwrites a newer one. */
+  seq: 0,
+  rendered: 0,
+  inflight: 0,
+  calls: 0,
+  tokens: 0,
+  lastKey: null,
+};
+
+/** Above this many calls at once, skip: only a held-down key gets near it. */
+const MAX_INFLIGHT = 12;
 
 const METERS = [
   {
@@ -32,11 +59,18 @@ async function init() {
   const data = await res.json();
   state.drafts = data.drafts;
 
+  state.perKeystroke = data.source === "live";
+
   renderMode(data);
   renderScenarios();
+  renderTally();
   select(state.drafts[0].id);
 
-  $("draft").addEventListener("input", () => { stop(); schedule(); });
+  $("draft").addEventListener("input", () => {
+    stop();
+    if (state.perKeystroke) evaluate();
+    else schedule();
+  });
   $("play").addEventListener("click", () => (state.playing ? stop() : play()));
   $("clear").addEventListener("click", () => { stop(); $("draft").value = ""; evaluate(); });
   $("send").addEventListener("click", send);
@@ -47,7 +81,9 @@ function renderMode(data) {
   el.hidden = false;
   if (data.source === "live") {
     el.className = "mode live";
-    el.innerHTML = "<strong>Live</strong>Every word you type is a real call to Jev.";
+    el.innerHTML =
+      "<strong>Live</strong>Every keystroke is its own call to Jev. Nothing is batched, " +
+      "nothing is cached; the running cost is in the footer.";
   } else if (data.source === "recorded") {
     el.className = "mode";
     el.innerHTML =
@@ -124,31 +160,64 @@ function schedule() {
   pending = setTimeout(evaluate, 110);
 }
 
-let inflight = null;
-async function evaluate() {
-  if (inflight) inflight.abort();
-  const controller = new AbortController();
-  inflight = controller;
-
+async function evaluate(force = false) {
   const body = { they_wrote: current().theyWrote, my_reply: $("draft").value };
+  const key = `${body.they_wrote}\u0000${body.my_reply}`;
+  if (!force && key === state.lastKey) return;
+  if (state.inflight >= MAX_INFLIGHT) {
+    // Only a held-down key gets here. Come back for the final text once the queue drains.
+    schedule();
+    return;
+  }
+  state.lastKey = key;
+
+  const seq = ++state.seq;
+  state.inflight += 1;
+  renderTally();
+
   let data;
   try {
     const res = await fetch("/api/compose", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(body),
-      signal: controller.signal,
     });
     data = await res.json();
-  } catch (error) {
-    if (error.name === "AbortError") return;
-    throw error;
+  } catch {
+    // A dropped call costs nothing here: the next keystroke asks again.
+    return;
+  } finally {
+    state.inflight -= 1;
   }
-  if (controller !== inflight) return;
+
+  state.calls += 1;
+  state.tokens += data.inputTokens ?? 0;
+  renderTally();
+
+  // An answer that was overtaken while in flight is stale. Count it, do not draw it.
+  if (seq <= state.rendered) return;
+  state.rendered = seq;
 
   renderMeters(data.answers);
   renderVerdict(data.verdict);
   renderSource(data);
+}
+
+/**
+ * The claim this demo makes about cost, kept as a live measurement rather than a
+ * sentence. Tokens are what the API billed, not an estimate.
+ */
+function renderTally() {
+  if (state.calls === 0 && state.inflight === 0) {
+    $("foot-note").textContent =
+      "Five questions on every keystroke. At $0.042 per million input tokens, typing this whole page costs less than a cent.";
+    return;
+  }
+  const dollars = (state.tokens / 1_000_000) * 0.042;
+  const flying = state.inflight > 0 ? `, ${state.inflight} in flight` : "";
+  $("foot-note").textContent =
+    `Five questions per call. ${state.calls} calls${flying}, ` +
+    `${state.tokens.toLocaleString()} input tokens, $${dollars.toFixed(4)} so far.`;
 }
 
 function renderSource(data) {
@@ -205,7 +274,7 @@ function send() {
   if (button.disabled) return;
   button.dataset.state = "sent";
   button.textContent = "Sent";
-  setTimeout(() => evaluate(), 1200);
+  setTimeout(() => evaluate(true), 1200);
 }
 
 function escape(text) {
@@ -215,5 +284,4 @@ function escape(text) {
   );
 }
 
-$("foot-note").textContent =
-  "Five questions per keystroke. At $0.042 per million input tokens, typing this whole page costs less than a cent.";
+

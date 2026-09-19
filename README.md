@@ -7,7 +7,7 @@ enough to sit in the hot path.
 
 ### Before you hit send — `/`
 
-You are writing a reply. On every word you type, five questions are asked about the draft:
+You are writing a reply. On every key you press, five questions are asked about the draft:
 how it will land, whether it answers what was actually asked, whether there is a credential
 in it, what it commits you to, whether it blames the reader. The Send button reacts. Type
 out the sample replies and watch a polite message turn hostile in its last sentence, or a
@@ -15,6 +15,13 @@ config paste turn into a leaked key.
 
 This is the demo that makes the point, because a three-second model cannot sit between your
 keyboard and your screen. A 70-500ms one can.
+
+Live, that is one call per keystroke, not per word: nothing is debounced and nothing is
+cancelled, the calls simply race and a stale answer is discarded when a newer one has
+already landed. Forty-four characters of typing is forty-four calls. The footer keeps the
+running count and what it actually cost, taken from the token usage the API reports rather
+than from an estimate, because the whole claim being made here is that this is cheap enough
+to do thoughtlessly. Offline it stays on word boundaries, where the recording has answers.
 
 ![Before you hit send](docs/compose.png)
 

@@ -154,6 +154,7 @@ export default async function handler(
         answers: reading.answers,
         source: reading.source,
         ms: reading.ms,
+        inputTokens: reading.inputTokens,
         verdict: judge(reading.answers, state.my_reply),
       });
     }

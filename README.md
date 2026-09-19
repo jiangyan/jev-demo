@@ -18,6 +18,12 @@ keyboard and your screen. A 70-500ms one can.
 
 ![Before you hit send](docs/compose.png)
 
+The gate scales to what the mistake costs. A reply that reads a little sharp gets a word of
+warning; a live credential cannot be taken back, so that one blocks outright. This is the
+same draft twenty words in, at the moment the config gets pasted:
+
+![Send blocked on a credential](docs/compose-credential.png)
+
 ### The triage desk — `/triage.html`
 
 A queue of support tickets, one call each answering six questions. The software decides,
